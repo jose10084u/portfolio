@@ -1,10 +1,10 @@
-import Image from "next/image"
-import { BiChevronRight } from "react-icons/bi"
-import { ExperienceData } from "../../types"
+import Image from "next/image";
+import { BiChevronRight } from "react-icons/bi";
+import { ExperienceData } from "../../types";
 
 interface Props {
-  resume: ExperienceData
-  border?: boolean
+  resume: ExperienceData;
+  border?: boolean;
 }
 
 export default function ResumeItem({ resume, border }: Props) {
@@ -17,7 +17,7 @@ export default function ResumeItem({ resume, border }: Props) {
       <h2
         className={`${
           resume.badge.endsWith("Present")
-            ? "text-main-orange border-main-orange"
+            ? "text-primary border-primary"
             : "text-gray-500 border-gray-500"
         } border border-solid text-xl py-0.5 px-3 tracking-wide inline-block`}
       >
@@ -28,23 +28,24 @@ export default function ResumeItem({ resume, border }: Props) {
           {resume.title}
         </h3>
         {resume.logo && (
-          <Image
-            src={resume.logo.url}
-            alt="linkedin"
-            width={100}
-            height={27}
-            objectFit="contain"
-            className="opacity-80 hidden"
-          />
+          <div className="rounded-full">
+            <Image
+              src={resume.logo}
+              alt="linkedin"
+              width={50}
+              height={50}
+              className="rounded-full"
+            />
+          </div>
         )}
       </div>
 
       <p className="text-gray-500 text-xl capitalize tracking-wider">
         {resume.subTitle}
       </p>
-      <p className="text-gray-500 text-2xl capitalize tracking-wide mt-5 leading-relaxed">
+      <pre className="text-gray-500 text-xl tracking-wide mt-5 text-ellipsis overflow-hidden leading-none">
         {resume.desc}
-      </p>
+      </pre>
     </div>
-  )
+  );
 }

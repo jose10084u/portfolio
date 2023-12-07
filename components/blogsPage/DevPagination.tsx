@@ -1,14 +1,14 @@
-import { Dispatch, MouseEvent, SetStateAction } from "react"
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
-import Skeleton from "react-loading-skeleton"
-import { useFetch } from "../../hooks/useFetch"
-import SkeletonWrapper from "../SkeletonWrapper"
+import { Dispatch, MouseEvent, SetStateAction } from "react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import Skeleton from "react-loading-skeleton";
+import { useFetch } from "../../hooks/useFetch";
+import SkeletonWrapper from "../SkeletonWrapper";
 
 interface Props {
-  currentPage: number
-  postsPerPage: number
-  setCurrentPage: Dispatch<SetStateAction<number>>
-  onLoadMore: any
+  currentPage: number;
+  postsPerPage: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
+  onLoadMore: any;
 }
 
 export default function DevPagination({
@@ -19,10 +19,10 @@ export default function DevPagination({
 }: Props) {
   const { data: totalBlogs, isError } = useFetch<number>(
     `/api/dev/totalArticles`
-  )
+  );
 
   if (isError) {
-    console.log(isError)
+    console.log(isError);
   }
 
   if (totalBlogs === undefined || isError) {
@@ -30,23 +30,23 @@ export default function DevPagination({
       <SkeletonWrapper>
         <Skeleton height={40} />
       </SkeletonWrapper>
-    )
+    );
   }
 
-  const totalPages = Math.ceil(totalBlogs / postsPerPage)
+  const totalPages = Math.ceil(totalBlogs / postsPerPage);
 
   function changePage(nextPage: number) {
-    setCurrentPage(nextPage)
+    setCurrentPage(nextPage);
     onLoadMore(
       `https://dev.to/api/articles?username=arafat4693&per_page=${postsPerPage}&page=${nextPage}`
-    )
+    );
   }
 
   return (
     <div className="p-5 rounded-lg bg-[#0e1422d9] flex justify-center items-center gap-7">
       <button
         onClick={() => changePage(currentPage - 1)}
-        className={`hover:text-main-orange ${
+        className={`hover:text-primary ${
           currentPage > 1
             ? "text-gray-400"
             : "text-gray-500 pointer-events-none"
@@ -64,8 +64,8 @@ export default function DevPagination({
             }
             className={`text-[1.4rem] ${
               currentPage === idx + 1
-                ? "text-main-orange"
-                : "text-gray-500 hover:text-main-orange transition-all"
+                ? "text-primary"
+                : "text-gray-500 hover:text-primary transition-all"
             } transition-all duration-300 cursor-pointer`}
           >
             {idx + 1}
@@ -74,7 +74,7 @@ export default function DevPagination({
       </div>
       <button
         onClick={() => changePage(currentPage + 1)}
-        className={`hover:text-main-orange ${
+        className={`hover:text-primary ${
           currentPage < totalPages
             ? "text-gray-400"
             : "text-gray-500 pointer-events-none"
@@ -84,5 +84,5 @@ export default function DevPagination({
         <FiChevronRight className="text-3xl" />
       </button>
     </div>
-  )
+  );
 }

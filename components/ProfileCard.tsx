@@ -1,13 +1,13 @@
-import { AiFillLinkedin } from "react-icons/ai"
-import { BsFillCloudArrowDownFill } from "react-icons/bs"
-import { ProfileData } from "../types"
-import MediaIcons from "./MediaIcons"
-import MyLink from "./MyLink"
-import Slide from "./Slide"
-import Typing from "./Typing"
-
+import { AiFillLinkedin } from "react-icons/ai";
+import { BsFillCloudArrowDownFill } from "react-icons/bs";
+import { ProfileData } from "../types";
+import MediaIcons from "./MediaIcons";
+import MyLink from "./MyLink";
+import Image from "next/image";
+import Slide from "./Slide";
+import Typing from "./Typing";
 interface Props {
-  profileData: ProfileData
+  profileData: ProfileData;
 }
 
 export default function ProfileCard({ profileData }: Props) {
@@ -16,11 +16,13 @@ export default function ProfileCard({ profileData }: Props) {
       <div className="relative z-40 w-full h-full myShadow">
         <Slide images={profileData.bgImages} />
 
-        <div className="relative z-20 w-56 h-56 mx-auto rounded-full -mt-36 profilePic">
-          <img
-            src={profileData.ownersPhoto.url}
+        <div className="relative z-20 w-56 h-56 mx-auto rounded-full -mt-36 profilePic !border-4 !border-r-lime-300">
+          <Image
+            src={profileData.ownersPhoto}
             alt="userPic"
-            className="w-full h-full block p-0 z-20 relative object-cover rounded-full border-4 border-[#1c1b1b] border-solid"
+            width="140"
+            height="140"
+            className="w-full h-full block p-0 z-20 relative object-cover rounded-full "
           />
         </div>
 
@@ -41,10 +43,10 @@ export default function ProfileCard({ profileData }: Props) {
           <MyLink
             name="my linkedin"
             Icon={AiFillLinkedin}
-            url="https://www.linkedin.com/in/arafat-freelancer"
+            url="https://www.linkedin.com/in/jose4utorres/"
           />
         </div>
       </div>
     </div>
-  )
+  );
 }

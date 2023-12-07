@@ -1,26 +1,26 @@
-import { ReactiveVar } from "@apollo/client"
-import { Dispatch, SetStateAction } from "react"
-import { MenuData } from "../types"
+import { ReactiveVar } from "@apollo/client";
+import { Dispatch, SetStateAction } from "react";
+import { MenuData } from "../types";
 
 interface Props {
-  menu: MenuData
-  noBorder?: boolean
-  active: boolean
-  reactiveVar: ReactiveVar<number>
-  showMenu: ReactiveVar<boolean>
-  last: boolean
+  menu: MenuData;
+  noBorder?: boolean;
+  active: boolean;
+  setMenuId: (id: number) => void;
+  setShowMenu: (flag: boolean) => void;
+  last: boolean;
 }
 
 export default function SideMenuBtn({
   menu,
   active,
-  reactiveVar,
-  showMenu,
+  setMenuId,
+  setShowMenu,
   last,
 }: Props) {
   function handleClick(): void {
-    showMenu(false)
-    reactiveVar(menu.id)
+    setShowMenu(false);
+    setMenuId(menu.id);
   }
 
   return (
@@ -35,5 +35,5 @@ export default function SideMenuBtn({
       <menu.Icon className="" />
       {menu.label}
     </button>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-import { BiLinkExternal } from "react-icons/bi"
-import { SocialMedia } from "../../types"
+import { BiLinkExternal } from "react-icons/bi";
+import { SocialMedia } from "../../types";
 
 interface Props {
-  socialMedia: SocialMedia
+  socialMedia: SocialMedia;
 }
 
 export default function LinkListItem({ socialMedia }: Props) {
@@ -24,7 +24,7 @@ export default function LinkListItem({ socialMedia }: Props) {
           href={socialMedia.mediaUrl}
           target="_blank"
           rel="noreferrer"
-          className="text-2xl font-semibold text-white transition-all duration-300 hover:text-main-orange"
+          className="text-2xl font-semibold text-white transition-all duration-300 hover:text-primary"
         >
           {socialMedia.label}
         </a>
@@ -42,5 +42,5 @@ export default function LinkListItem({ socialMedia }: Props) {
         <BiLinkExternal className="text-3xl text-white" />
       </a>
     </li>
-  )
+  );
 }

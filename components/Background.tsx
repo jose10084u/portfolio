@@ -1,19 +1,19 @@
-import Particles from "react-tsparticles"
-import { loadFull } from "tsparticles"
-import { useCallback } from "react"
-import type { Engine, Container } from "tsparticles-engine"
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import { useCallback } from "react";
+import type { Engine, Container } from "tsparticles-engine";
 
 const Background = () => {
   const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine)
-  }, [])
+    await loadFull(engine);
+  }, []);
 
   const particlesLoaded = useCallback(
     async (container: Container | undefined) => {
       // await console.log(container)
     },
     []
-  )
+  );
 
   return (
     <Particles
@@ -50,10 +50,10 @@ const Background = () => {
         },
         particles: {
           color: {
-            value: "#f59e0b",
+            value: "#29e9ff",
           },
           links: {
-            color: "#f59e0b",
+            color: "#29e9ff",
             distance: 150,
             enable: true,
             opacity: 0.5,
@@ -92,7 +92,7 @@ const Background = () => {
         detectRetina: true,
       }}
     />
-  )
-}
+  );
+};
 
-export default Background
+export default Background;

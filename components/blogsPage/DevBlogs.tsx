@@ -1,26 +1,26 @@
-import { useState } from "react"
-import { useFetch } from "../../hooks/useFetch"
-import { blog } from "../../types"
-import Title from "../Title"
-import BlogSkeleton from "./BlogSkeleton"
-import DevBlog from "./DevBlog"
-import DevPagination from "./DevPagination"
+import { useState } from "react";
+import { useFetch } from "../../hooks/useFetch";
+import { blog } from "../../types";
+import Title from "../Title";
+import BlogSkeleton from "./BlogSkeleton";
+import DevBlog from "./DevBlog";
+import DevPagination from "./DevPagination";
 
-const postsPerPage = 10
+const postsPerPage = 10;
 
 export default function DevBlogs() {
-  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const {
     data: blogsData,
     isLoading,
     isError,
     reFetch,
   } = useFetch<blog[]>(
-    `https://dev.to/api/articles?username=arafat4693&per_page=${postsPerPage}&page=${currentPage}`
-  )
+    `https://dev.to/api/articles?per_page=${postsPerPage}&page=${currentPage}`
+  );
 
   if (isError) {
-    console.log(isError)
+    console.log(isError);
   }
 
   return (
@@ -43,5 +43,5 @@ export default function DevBlogs() {
         />
       </div>
     </section>
-  )
+  );
 }

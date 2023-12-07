@@ -1,20 +1,19 @@
-import Price from "./Price"
-import { FaReact } from "react-icons/fa"
-import PriceSkeleton from "./PriceSkeleton"
-import { useQuery } from "@apollo/client"
-import profileOperations from "../../graphqlOperations/profile"
-import { PriceData } from "../../types"
-import { DiCodeigniter } from "react-icons/di"
-import { GiCondorEmblem } from "react-icons/gi"
+import Price from "./Price";
+import PriceSkeleton from "./PriceSkeleton";
+import { useQuery } from "@apollo/client";
+import profileOperations from "../../graphqlOperations/profile";
+import { PriceData } from "../../types";
+import { DiCodeigniter } from "react-icons/di";
+import { GiCondorEmblem } from "react-icons/gi";
 
 interface GetPricesData {
-  prices: PriceData[]
+  prices: PriceData[];
 }
 
 export default function Prices() {
   const { data, loading, error } = useQuery<GetPricesData>(
     profileOperations.Queries.getPrices
-  )
+  );
 
   return (
     <ul className="prices grid sm:grid-cols-2 grid-cols-1">
@@ -32,5 +31,5 @@ export default function Prices() {
         </>
       </li>
     </ul>
-  )
+  );
 }

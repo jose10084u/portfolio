@@ -1,6 +1,6 @@
-import Title from "../Title"
-import ContactForm from "./ContactForm"
-import Location from "./Location"
+import Title from "../Title";
+import ContactForm from "./ContactForm";
+import Location from "./Location";
 
 export default function Contact() {
   return (
@@ -11,5 +11,5 @@ export default function Contact() {
       <Title name="contact form" />
       <ContactForm />
     </section>
-  )
+  );
 }

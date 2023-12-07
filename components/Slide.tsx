@@ -1,11 +1,11 @@
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Autoplay, EffectFade } from "swiper"
-import "swiper/css"
-import Image from "next/image"
-import "swiper/css/effect-fade"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper";
+import "swiper/css";
+import Image, { StaticImageData } from "next/image";
+import "swiper/css/effect-fade";
 
 interface Props {
-  images: { url: string }[]
+  images: StaticImageData[];
 }
 
 export default function Slide({ images }: Props) {
@@ -23,7 +23,7 @@ export default function Slide({ images }: Props) {
           <SwiperSlide key={idx}>
             <div className="w-full h-full relative">
               <Image
-                src={img.url}
+                src={img}
                 alt="tour"
                 layout="fill"
                 objectFit="cover"
@@ -34,5 +34,5 @@ export default function Slide({ images }: Props) {
         ))}
       </Swiper>
     </div>
-  )
+  );
 }

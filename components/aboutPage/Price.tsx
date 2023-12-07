@@ -1,10 +1,10 @@
-import { FaChevronRight } from "react-icons/fa"
-import { PriceData } from "../../types"
-import MyIcon from "../MyIcon"
+import { FaChevronRight } from "react-icons/fa";
+import { PriceData } from "../../types";
+import MyIcon from "../MyIcon";
 
 interface Props {
-  Icon: any
-  price: PriceData
+  Icon: any;
+  price: PriceData;
 }
 
 export default function Price({ Icon, price }: Props) {
@@ -44,12 +44,12 @@ export default function Price({ Icon, price }: Props) {
           rel="noreferrer"
           href={price.freelanceUrl}
           target="_blank"
-          className="group-hover:mx-2 group-hover:text-main-orange transition-all duration-300 tracking-wide text-[1.3rem]"
+          className="group-hover:mx-2 group-hover:text-primary transition-all duration-300 tracking-wide text-[1.3rem]"
         >
           order now
         </a>
-        <FaChevronRight className="text-2xl group-hover:text-main-orange transition-all duration-300" />
+        <FaChevronRight className="text-2xl group-hover:text-primary transition-all duration-300" />
       </span>
     </div>
-  )
+  );
 }

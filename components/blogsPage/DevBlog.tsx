@@ -1,8 +1,8 @@
-import Image from "next/image"
-import { blog } from "../../types"
+import Image from "next/image";
+import { blog } from "../../types";
 
 interface Props {
-  blog: blog
+  blog: blog;
 }
 
 export default function Blog({ blog }: Props) {
@@ -24,7 +24,7 @@ export default function Blog({ blog }: Props) {
           />
         </a>
         <h2
-          className={`text-main-orange border-main-orange mt-7 border border-solid text-xl py-0.5 px-3 tracking-wide inline-block relative left-1/2 -translate-x-1/2`}
+          className={`text-primary border-primary mt-7 border border-solid text-xl py-0.5 px-3 tracking-wide inline-block relative left-1/2 -translate-x-1/2`}
         >
           {new Date(blog.created_at).toLocaleDateString()}
         </h2>
@@ -32,7 +32,7 @@ export default function Blog({ blog }: Props) {
           rel="noreferrer"
           href={blog.url}
           target="_blank"
-          className="text-gray-300 block text-2xl text-center font-medium mt-5 mb-4 tracking-wide group-hover:text-main-orange transition-all duration-300"
+          className="text-gray-300 block text-2xl text-center font-medium mt-5 mb-4 tracking-wide group-hover:text-primary transition-all duration-300"
         >
           {blog.title}
         </a>
@@ -41,5 +41,5 @@ export default function Blog({ blog }: Props) {
         </p>
       </div>
     </li>
-  )
+  );
 }

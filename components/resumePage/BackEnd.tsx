@@ -1,8 +1,8 @@
-import { FieldValueData } from "../../types"
-import BackEndSkeleton from "./BackEndSkeleton"
+import { FieldValueData } from "../../types";
+import BackEndSkeleton from "./BackEndSkeleton";
 
 interface Props {
-  backend: FieldValueData[] | undefined
+  backend: FieldValueData[] | undefined;
 }
 
 export default function BackEnd({ backend }: Props) {
@@ -12,7 +12,7 @@ export default function BackEnd({ backend }: Props) {
         backend.map((b) => (
           <div key={b.id} className="text-center">
             <div
-              className="radial-progress text-main-orange text-2xl"
+              className="radial-progress text-primary text-2xl"
               style={
                 { "--value": +b.value, "--size": "9rem" } as React.CSSProperties
               }
@@ -31,5 +31,5 @@ export default function BackEnd({ backend }: Props) {
         </>
       )}
     </div>
-  )
+  );
 }

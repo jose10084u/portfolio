@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors")
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   // important: true,
@@ -11,7 +11,7 @@ module.exports = {
     extend: {
       colors: {
         "main-dark": "#111928",
-        "main-orange": "#f59e0b",
+        primary: "#29e9ff",
       },
       transitionProperty: {
         width: "width",
@@ -54,4 +54,4 @@ module.exports = {
     },
   },
   plugins: [require("daisyui"), require("@tailwindcss/typography")],
-}
+};

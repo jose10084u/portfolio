@@ -1,23 +1,23 @@
-import { useQuery } from "@apollo/client"
-import { Dispatch, SetStateAction, MouseEvent } from "react"
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
-import Skeleton from "react-loading-skeleton"
-import blogOperations from "../../graphqlOperations/blog"
-import SkeletonWrapper from "../SkeletonWrapper"
-import { client } from "../../apollo-client"
-import { BlogsQuery } from "../../types"
+import { useQuery } from "@apollo/client";
+import { Dispatch, SetStateAction, MouseEvent } from "react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import Skeleton from "react-loading-skeleton";
+import blogOperations from "../../graphqlOperations/blog";
+import SkeletonWrapper from "../SkeletonWrapper";
+import { client } from "../../apollo-client";
+import { BlogsQuery } from "../../types";
 
 interface Props {
-  currentPage: number
-  postsPerPage: number
-  setCurrentPage: Dispatch<SetStateAction<number>>
-  setSkip: Dispatch<SetStateAction<number>>
-  setFilteredBlogs: Dispatch<SetStateAction<BlogsQuery | undefined>>
-  onLoadMore: any
+  currentPage: number;
+  postsPerPage: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
+  setSkip: Dispatch<SetStateAction<number>>;
+  setFilteredBlogs: Dispatch<SetStateAction<BlogsQuery | undefined>>;
+  onLoadMore: any;
 }
 
 interface RecordsQuery {
-  blogsConnection: { aggregate: { count: number } }
+  blogsConnection: { aggregate: { count: number } };
 }
 
 export default function Pagination({
@@ -30,10 +30,10 @@ export default function Pagination({
 }: Props) {
   const { data: paginationData, error } = useQuery<RecordsQuery>(
     blogOperations.Queries.getTotalRecords
-  )
+  );
 
   if (error) {
-    console.log(error)
+    console.log(error);
   }
 
   if (paginationData === undefined || error) {
@@ -41,12 +41,12 @@ export default function Pagination({
       <SkeletonWrapper>
         <Skeleton height={40} />
       </SkeletonWrapper>
-    )
+    );
   }
 
   const totalPages = Math.ceil(
     paginationData.blogsConnection.aggregate.count / postsPerPage
-  )
+  );
 
   function getCachedBlogs(skipBlogs: number) {
     const { blogs } = client.readQuery({
@@ -55,20 +55,20 @@ export default function Pagination({
         skip: skipBlogs,
         first: postsPerPage,
       },
-    })
-    return blogs
+    });
+    return blogs;
   }
 
   function changePage(nextPage: number) {
-    setCurrentPage(nextPage)
-    const skipBlogs = (nextPage - 1) * postsPerPage
-    const cachedBlogs = getCachedBlogs(skipBlogs)
+    setCurrentPage(nextPage);
+    const skipBlogs = (nextPage - 1) * postsPerPage;
+    const cachedBlogs = getCachedBlogs(skipBlogs);
     if (cachedBlogs.length) {
-      setFilteredBlogs({ blogs: cachedBlogs })
+      setFilteredBlogs({ blogs: cachedBlogs });
     } else {
       onLoadMore({
         variables: { skip: skipBlogs, first: postsPerPage },
-      }).then(() => setSkip((nextPage - 1) * postsPerPage))
+      }).then(() => setSkip((nextPage - 1) * postsPerPage));
     }
   }
 
@@ -76,7 +76,7 @@ export default function Pagination({
     <div className="p-5 rounded-lg bg-[#0e1422d9] flex justify-center items-center gap-7">
       <button
         onClick={() => changePage(currentPage - 1)}
-        className={`hover:text-main-orange ${
+        className={`hover:text-primary ${
           currentPage > 1
             ? "text-gray-400"
             : "text-gray-500 pointer-events-none"
@@ -94,8 +94,8 @@ export default function Pagination({
             }
             className={`text-[1.4rem] ${
               currentPage === idx + 1
-                ? "text-main-orange"
-                : "text-gray-500 hover:text-main-orange transition-all"
+                ? "text-primary"
+                : "text-gray-500 hover:text-primary transition-all"
             } transition-all duration-300 cursor-pointer`}
           >
             {idx + 1}
@@ -104,7 +104,7 @@ export default function Pagination({
       </div>
       <button
         onClick={() => changePage(currentPage + 1)}
-        className={`hover:text-main-orange ${
+        className={`hover:text-primary ${
           currentPage < totalPages
             ? "text-gray-400"
             : "text-gray-500 pointer-events-none"
@@ -114,5 +114,5 @@ export default function Pagination({
         <FiChevronRight className="text-3xl" />
       </button>
     </div>
-  )
+  );
 }

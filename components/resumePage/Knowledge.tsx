@@ -1,9 +1,9 @@
-import { BsCheckLg } from "react-icons/bs"
-import { FieldValueData } from "../../types"
-import KnowledgeSkeleton from "./KnowledgeSkeleton"
+import { BsCheckLg } from "react-icons/bs";
+import { FieldValueData } from "../../types";
+import KnowledgeSkeleton from "./KnowledgeSkeleton";
 
 interface Props {
-  knowledge: string[] | undefined
+  knowledge: string[] | undefined;
 }
 
 export default function Knowledge({ knowledge }: Props) {
@@ -12,8 +12,10 @@ export default function Knowledge({ knowledge }: Props) {
       {knowledge ? (
         knowledge.map((k, idx) => (
           <div key={idx} className="flex gap-6 items-center mb-6">
-            <BsCheckLg className="text-main-orange text-2xl" />
-            <span className="text-gray-300 text-2xl">{k}</span>
+            <div className="h-[15px] w-[15px]">
+              <BsCheckLg className="text-primary text-2xl" />
+            </div>
+            <span className="text-gray-300 text-xl">{k}</span>
           </div>
         ))
       ) : (
@@ -24,5 +26,5 @@ export default function Knowledge({ knowledge }: Props) {
         </>
       )}
     </div>
-  )
+  );
 }

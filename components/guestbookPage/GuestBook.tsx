@@ -1,9 +1,9 @@
-import { AiOutlineSwapRight } from "react-icons/ai"
-import Title from "../Title"
-import GuestComments from "./GuestComments"
-import GuestForm from "./GuestForm"
+import { AiOutlineSwapRight } from "react-icons/ai";
+import Title from "../Title";
+import GuestComments from "./GuestComments";
+import GuestForm from "./GuestForm";
 
-const loading = false
+const loading = false;
 
 export default function GuestBook() {
   return (
@@ -17,5 +17,5 @@ export default function GuestBook() {
         <GuestComments />
       </section>
     </section>
-  )
+  );
 }

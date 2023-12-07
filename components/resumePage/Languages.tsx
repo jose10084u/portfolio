@@ -1,8 +1,8 @@
-import { FieldValueData } from "../../types"
-import LanguageSkeleton from "./LanguageSkeleton"
+import { FieldValueData } from "../../types";
+import LanguageSkeleton from "./LanguageSkeleton";
 
 interface Props {
-  languages: FieldValueData[] | undefined
+  languages: FieldValueData[] | undefined;
 }
 
 export default function Languages({ languages }: Props) {
@@ -19,7 +19,7 @@ export default function Languages({ languages }: Props) {
                 <span
                   key={idx}
                   className={`w-6 h-6 rounded-full ${
-                    idx < +l.value ? "bg-main-orange" : "bg-gray-800"
+                    idx < +l.value ? "bg-primary" : "bg-gray-800"
                   }`}
                 ></span>
               ))}
@@ -35,5 +35,5 @@ export default function Languages({ languages }: Props) {
         </>
       )}
     </div>
-  )
+  );
 }
